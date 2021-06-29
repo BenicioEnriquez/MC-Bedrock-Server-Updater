@@ -16,4 +16,5 @@ Simply place the proper executeable in the root folder of your server, and run i
 
 ## Credit
 Main software Copyright (C) 2021 Benicio Enriquez
+
 ZipStorer Copyright (c) 2016 Jaime Olivares (Used for extracting server updates)
