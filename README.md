@@ -15,4 +15,5 @@ Simply place the proper executeable in the root folder of your server, and run i
 * Maybe Auto Update?
 
 ## Credit
-Main software Copyright (C) 2021 Benicio Enriquez, with help for ZipStorer Copyright (c) 2016 Jaime Olivares
+Main software Copyright (C) 2021 Benicio Enriquez
+ZipStorer Copyright (c) 2016 Jaime Olivares (Used for extracting server updates)
