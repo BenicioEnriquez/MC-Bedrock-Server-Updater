@@ -20,13 +20,17 @@ class MCUpdater
 		ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 		using (WebClient client = new WebClient())
 		{
-			Console.WriteLine("Fetching most recent version...");
-			string result = client.DownloadString("https://minecraft.net/en-us/download/server/bedrock/");
-			Regex rx = new Regex(@"(https:\/\/minecraft\.azureedge\.net\/bin-win\/bedrock-server-)(.*)(\.zip)");
-			Match match = rx.Match(result);
-			string link = match.Value;
-			string version = match.Groups[2].Value;
-			Console.WriteLine("Version Found: " + version);
+			//Console.WriteLine("Fetching most recent version...");
+			//string result = client.DownloadString("https://minecraft.net/en-us/download/server/bedrock/");
+			//Regex rx = new Regex(@"(https:\/\/minecraft\.azureedge\.net\/bin-win\/bedrock-server-)(.*)(\.zip)");
+			//Match match = rx.Match(result);
+			//string link = match.Value;
+			//string version = match.Groups[2].Value;
+			//Console.WriteLine("Version Found: " + version);
+			Console.Write("Please Enter the Version you want to fetch: ");
+			string version = Console.ReadLine();
+			string link = "https://minecraft.azureedge.net/bin-win/bedrock-server-" + version + ".zip";
+			Console.WriteLine();
 			try {
 				string oldversion = File.ReadAllText("version.txt");
 				Console.WriteLine("Current Version: " + oldversion + "\n");
