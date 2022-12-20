@@ -20,17 +20,24 @@ class MCUpdater
 		ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
 		using (WebClient client = new WebClient())
 		{
-			//Console.WriteLine("Fetching most recent version...");
-			//string result = client.DownloadString("https://minecraft.net/en-us/download/server/bedrock/");
-			//Regex rx = new Regex(@"(https:\/\/minecraft\.azureedge\.net\/bin-win\/bedrock-server-)(.*)(\.zip)");
-			//Match match = rx.Match(result);
-			//string link = match.Value;
-			//string version = match.Groups[2].Value;
-			//Console.WriteLine("Version Found: " + version);
-			Console.Write("Please Enter the Version you want to fetch: ");
-			string version = Console.ReadLine();
-			string link = "https://minecraft.azureedge.net/bin-win/bedrock-server-" + version + ".zip";
+			client.Headers.Add("user-agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/108.0.0.0 Safari/537.36");
+            		client.Headers.Add("accept", "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9");
+            		client.Headers.Add("accept-encoding", "deflate, br");
+            		client.Headers.Add("accept-language", "en-US,en;q=0.9");
+			
+			Console.WriteLine("Fetching most recent version...");
+			string result = client.DownloadString("https://minecraft.net/en-us/download/server/bedrock/");
+			Regex rx = new Regex(@"(https:\/\/minecraft\.azureedge\.net\/bin-win\/bedrock-server-)(.*)(\.zip)");
+			Match match = rx.Match(result);
+			string link = match.Value;
+			string version = match.Groups[2].Value;
+			Console.WriteLine("Version Found: " + version);
+			
+			//Console.Write("Please Enter the Version you want to fetch: ");
+			//string version = Console.ReadLine();
+			//string link = "https://minecraft.azureedge.net/bin-win/bedrock-server-" + version + ".zip";
 			Console.WriteLine();
+			
 			try {
 				string oldversion = File.ReadAllText("version.txt");
 				Console.WriteLine("Current Version: " + oldversion + "\n");
